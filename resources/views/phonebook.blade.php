@@ -7,8 +7,15 @@
 </head>
 <body>
 <div id="app">
-	<myheader></myheader>
-	<myfooter></myfooter>
+	<div class="container">
+
+				<myheader></myheader>
+				{{-- component to show vue data --}}
+				<router-view></router-view>
+				{{-- end component to show vue data --}}
+				<myfooter></myfooter>
+
+	</div>
 </div>
 <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 </body>

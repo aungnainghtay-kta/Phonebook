@@ -12,5 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('phonebook');
+    return view('welcome');
 });
+Route::get('/phonebook/{name}', function(){
+	return redirect('/phonebook');
+});
+Route::resource('phonebook', 'PhonebookController');
+Route::post('getdata', 'PhonebookController@getData');
