@@ -10,9 +10,9 @@
         </p>
         <div class="panel-block">
             <p class="control has-icons-left">
-                <input class="input is-small" type="text" placeholder="search" v-model="searchQuery">
+                <input class="input" type="text" placeholder="search" v-model="searchQuery">
                 <span class="icon is-small is-left">
-        <i class="fas fa-search" aria-hidden="true"></i>
+        <i class="fa fa-search" aria-hidden="true"></i>
       </span>
             </p>
         </div>
@@ -54,7 +54,10 @@
             searchQuery(){
                if(this.searchQuery.length > 0){
                     this.temp=this.lists.filter((item)=>{
-                        return item.name.toLowerCase().indexOf(this.searchQuery.toLowerCase())>-1
+                        return Object.keys(item).some((key)=>{
+                            let string=String(item[key]);
+                            return string.toLowerCase().indexOf(this.searchQuery.toLowerCase())>-1
+                        })
                     });
                }else{
                 this.temp=this.lists;
@@ -66,11 +69,11 @@
                 this.addActive="is-active";
             },
             show(key){
-                this.$children[1].list=this.lists[key];
+                this.$children[1].list=this.temp[key];
                 this.addShow="is-active";
             },
             update(key){
-                this.$children[2].list=this.lists[key];
+                this.$children[2].list=this.temp[key];
                 this.openEdit="is-active";
             },
             closeModal(){
@@ -79,7 +82,8 @@
             del(key,id){
                 if(confirm('Are you sure?')){
                 this.loading=!this.loading;
-                 axios.delete(`/phonebook/${id}`).then((response)=>{this.lists.splice(key,1);this.loading=!this.loading;}).catch((error)=>this.errors=error.response.data.errors);
+                 axios.delete(`/phonebook/${id}`).then((response)=>{this.lists.splice(key,1);
+                    this.loading=!this.loading;}).catch((error)=>this.errors=error.response.data.errors);
                 }
             }
         }

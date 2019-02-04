@@ -66,7 +66,7 @@
                 return -1;
               }
             });
-            this.list='';
+            this.list={};
           }).catch((error)=>this.errors=error.response.data.errors);
       }
 		}

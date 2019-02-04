@@ -8,7 +8,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 let myheader=require('./components/Myheader.vue').default;
-let myfooter=require('./components/MyFooter.vue').default;
+//let myfooter=require('./components/MyFooter.vue').default;
 let Home=require('./components/Home.vue').default;
 let About=require('./components/About.vue').default;
 
@@ -25,6 +25,6 @@ const router = new VueRouter({
 
 const app = new Vue({
     el: '#app',
-    components:{myheader, myfooter},
+    components:{myheader},
     router
 });

@@ -13,7 +13,7 @@
 				{{-- component to show vue data --}}
 				<router-view></router-view>
 				{{-- end component to show vue data --}}
-				<myfooter></myfooter>
+				<!-- <myfooter></myfooter> -->
 
 	</div>
 </div>
